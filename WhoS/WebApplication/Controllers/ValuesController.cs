@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WhoSWebAPI;
 
 namespace WebApplication.Controllers
 {
@@ -14,7 +15,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            DataBase dataBase = new DataBase();
+            return new string[] { "JeongInHye", "WhoS" };
         }
 
         // GET api/values/5
