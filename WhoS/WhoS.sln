@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSForms", "WhoSForms\WhoSForms.csproj", "{9574F5A2-0768-49DF-8598-DA7C757D3463}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSWebAPI", "WebApplication\WhoSWebAPI.csproj", "{AABC753E-C131-467D-87E9-FBE332C4280D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWebAPI", "WebApplication\WhoSWebAPI.csproj", "{AABC753E-C131-467D-87E9-FBE332C4280D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSWeb", "WebApplication1\WhoSWeb.csproj", "{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
