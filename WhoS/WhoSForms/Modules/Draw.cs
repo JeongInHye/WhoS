@@ -30,7 +30,6 @@ namespace WhoSForms.Modules
             panel.Location = (Point)hashtable["point"];
             panel.BackColor = (Color)hashtable["color"];
             panel.Name = hashtable["name"].ToString();
-            panel.Click += (EventHandler)hashtable["click"];
             parentDomain.Controls.Add(panel);
             return panel;
         }
@@ -67,6 +66,27 @@ namespace WhoSForms.Modules
             return button;
         }
 
+        public Button getButton_menu(Hashtable hashtable, Control parentDomain)
+        {
+            Button button = new Button();
+            button.TabStop = false;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.Size = (Size)hashtable["size"];
+            button.Location = (Point)hashtable["point"];
+            button.BackColor = (Color)hashtable["color"];
+            button.Name = hashtable["name"].ToString();
+            button.Text = hashtable["text"].ToString();
+            button.Font = (Font)hashtable["font"];
+            button.Click += (EventHandler)hashtable["click"];
+            button.Cursor = Cursors.Hand;
+            button.ForeColor = Color.FromArgb(240, 240, 240);
+            button.TabStop = false;
+            button.FlatAppearance.BorderSize = 1;
+            parentDomain.Controls.Add(button);
+            return button;
+        }
+
         public TextBox getTextBox(Hashtable hashtable, Control parentDomain)
         {
             TextBox textBox = new TextBox();
@@ -82,7 +102,7 @@ namespace WhoSForms.Modules
         public ListView getListView_Check(Hashtable hashtable, Control parentDomain)
         {
             ListView listView = new ListView();
-            listView.View = View.Details;
+            listView.View = System.Windows.Forms.View.Details;
             listView.GridLines = true;
             listView.Location = (Point)hashtable["point"];
             listView.Size = (Size)hashtable["size"];
@@ -98,7 +118,7 @@ namespace WhoSForms.Modules
         public ListView getListView_FullSelect(Hashtable hashtable, Control parentDomain)
         {
             ListView listView = new ListView();
-            listView.View = View.Details;
+            listView.View = System.Windows.Forms.View.Details;
             listView.GridLines = true;
             listView.FullRowSelect = true;
             listView.Location = (Point)hashtable["point"];
