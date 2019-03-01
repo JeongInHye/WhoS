@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
 <html>
 
 <head>
@@ -11,15 +10,33 @@
     <title>WhoS</title>
 
     <script>
-        
+        $(document).ready(function () {
+            $("#button").click(function () {
+                var loginData = {
+                    user_id: $("#id").val(),
+                    user_pw: $("#password").val()
+                };
+
+                location.href = "htmlpage.html";
+                console.log(loginData);
+            });
+        });
+
+        //$.post("api/values", { name: "John", time: "2pm" });
     </script>
 
     <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
         .cover-image {
             position: absolute;
-            top: 15%;
+            top:  calc(100vh - 85%); /*15%;*/
             left: 50%;
-            width: 300px;
+            width: calc(100wh - 300px); /*300px;*/
             height: 250px;
             transform: translate(-50%, -50%)
         }
@@ -27,7 +44,7 @@
         .login {
             position: absolute;
             margin: 0;
-            top: 50%;
+            top: 55%;
             left: 50%;
             width: 500px;
             height: 400px;
@@ -62,9 +79,8 @@
 </head>
 
 <body bgcolor="#474644">
-
     <div class="logo">
-        <img src="WhoSlogo1.png" class="cover-image">
+        <img src="~/WhoSlogo1.png" class="cover-image">
     </div>
 
     <div class="login">
@@ -72,10 +88,9 @@
             <h2 style="margin: 45px;">거래처 로그인</h2>
             <input type="text" name="id" id="id" placeholder="ID" required />
             <input type="password" name="password" id="password" placeholder="Password" required />
-            <input type="submit" value="password" name="password" id="password" />
+            <input type="submit" value="로그인" name="password" id="button" />
         </form>
     </div>
-
 </body>
 
 </html>
