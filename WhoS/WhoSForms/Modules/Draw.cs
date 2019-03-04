@@ -18,7 +18,7 @@ namespace WhoSForms.Modules
             tagetForm.MdiParent = parentForm;
             tagetForm.WindowState = FormWindowState.Maximized;
             tagetForm.FormBorderStyle = FormBorderStyle.None;
-            tagetForm.Dock = DockStyle.Fill;                                                           
+            tagetForm.Dock = DockStyle.Fill;
             parentDomain.Controls.Add(tagetForm);
             return tagetForm;
         }
@@ -93,10 +93,23 @@ namespace WhoSForms.Modules
             textBox.Width = Convert.ToInt32(hashtable["width"].ToString());
             textBox.Location = (Point)hashtable["point"];
             textBox.Name = hashtable["name"].ToString();
+            textBox.Font = (Font)hashtable["font"];
             //textBox.BackColor = (Color)hashtable["color"];
             //textBox.Enabled = (bool)hashtable["enabled"];
             parentDomain.Controls.Add(textBox);
             return textBox;
+        }
+
+        public ListView getListView(Hashtable hashtable, Control parentDomain)
+        {
+            ListView listView = new ListView();
+            listView.View = System.Windows.Forms.View.Details;
+            listView.GridLines = true;
+            listView.Location = (Point)hashtable["point"];
+            listView.Size = (Size)hashtable["size"];
+            listView.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
+            parentDomain.Controls.Add(listView);
+            return listView;
         }
 
         public ListView getListView_Check(Hashtable hashtable, Control parentDomain)
@@ -106,8 +119,8 @@ namespace WhoSForms.Modules
             listView.GridLines = true;
             listView.Location = (Point)hashtable["point"];
             listView.Size = (Size)hashtable["size"];
-            listView.BackColor = (Color)hashtable["color"];
-            listView.Name = hashtable["name"].ToString();
+            //listView.BackColor = (Color)hashtable["color"];
+            //listView.Name = hashtable["name"].ToString();
             listView.CheckBoxes = true;
             listView.MouseClick += (MouseEventHandler)hashtable["click"];
             listView.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
@@ -123,8 +136,8 @@ namespace WhoSForms.Modules
             listView.FullRowSelect = true;
             listView.Location = (Point)hashtable["point"];
             listView.Size = (Size)hashtable["size"];
-            listView.BackColor = (Color)hashtable["color"];
-            listView.Name = hashtable["name"].ToString();
+            //listView.BackColor = (Color)hashtable["color"];
+            //listView.Name = hashtable["name"].ToString();
             listView.MouseClick += (MouseEventHandler)hashtable["click"];
             listView.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
             parentDomain.Controls.Add(listView);

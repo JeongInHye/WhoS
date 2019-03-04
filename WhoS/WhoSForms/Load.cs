@@ -55,7 +55,7 @@ namespace WhoSForms
 
         private void GetMainInfoLoad(object o, EventArgs a)
         {
-            parentForm.Size = new Size(100, 100);
+            parentForm.Size = new Size(1400, 800);
             parentForm.FormBorderStyle = FormBorderStyle.None;
             new MainInfoView(parentForm);
         }

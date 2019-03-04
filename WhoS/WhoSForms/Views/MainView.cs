@@ -40,7 +40,8 @@ namespace WhoSForms.View
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(1385, 676));
             hashtable.Add("point", new Point(0, 85));
-            hashtable.Add("color", Color.LightCoral);
+            //hashtable.Add("color", Color.LightCoral);
+            hashtable.Add("color", Color.FromArgb(240, 240, 240));
             hashtable.Add("name", "pnl_contents");
             pnl_contents = draw.getPanel(hashtable, parentForm);
 

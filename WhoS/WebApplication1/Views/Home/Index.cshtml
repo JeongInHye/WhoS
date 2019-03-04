@@ -17,7 +17,12 @@
                     user_pw: $("#password").val()
                 };
 
-                location.href = "htmlpage.html";
+                //if (user_id == "root") {
+                //    if (user_pw == "1234") {
+                //        location.href = "/Home/Client";
+                //    }
+                //}
+
                 console.log(loginData);
             });
         });
@@ -34,7 +39,7 @@
 
         .cover-image {
             position: absolute;
-            top:  calc(100vh - 85%); /*15%;*/
+            top: calc(100vh - 85%); /*15%;*/
             left: 50%;
             width: calc(100wh - 300px); /*300px;*/
             height: 250px;
