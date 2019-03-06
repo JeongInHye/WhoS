@@ -19,5 +19,6 @@ namespace WhoSForms
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+        static public string serverUrl = "http://gdc3.gudi.kr:47001/";
     }
 }

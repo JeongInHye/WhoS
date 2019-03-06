@@ -14,6 +14,10 @@ namespace WhoSForms.Forms
     {
         public ClientAddForm()
         {
+        }
+
+        public ClientAddForm(Form parentForm)
+        {
             InitializeComponent();
             Load load = new Load(this);
             Load += load.GetHandler("clientAdd");

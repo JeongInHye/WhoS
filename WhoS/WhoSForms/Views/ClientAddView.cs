@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -124,7 +126,7 @@ namespace WhoSForms.Views
             hashtable.Add("color", Color.FromArgb(71, 70, 68));
             hashtable.Add("name", "btnAdd");
             hashtable.Add("text", "추가");
-            hashtable.Add("font", new Font("맑은 고딕", 13,FontStyle.Bold));
+            hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
             hashtable.Add("click", (EventHandler)Add_Click);
             btnAdd = draw.getButton(hashtable, parentForm);
 
@@ -146,8 +148,35 @@ namespace WhoSForms.Views
 
         private void Add_Click(object sender, EventArgs e)
         {
+            if (tboxName.Text == "" || tboxPName.Text == "" || tboxCall.Text == "" || tboxID.Text == "" || tboxPassword.Text == "")
+            {
+                MessageBox.Show("모두 입력해주세요");
+            }
+            else
+            {
+                WebClient wc = new WebClient();
+                NameValueCollection nameValue = new NameValueCollection();
 
-            MessageBox.Show("추가완료");
+                nameValue.Add("Name", tboxName.Text);
+                nameValue.Add("pName", tboxName.Text);
+                nameValue.Add("Call", tboxName.Text);
+                nameValue.Add("Address", tboxName.Text);
+                nameValue.Add("ID", tboxName.Text);
+                nameValue.Add("Password", tboxName.Text);
+
+                byte[] result = wc.UploadValues(Program.serverUrl + "Client/Add", "POST", nameValue);
+                string resultStr = Encoding.UTF8.GetString(result);
+
+                if (resultStr == "1")
+                {
+                    MessageBox.Show("거래처 추가 완료");
+                    parentForm.Close();
+                }
+                else
+                {
+                    MessageBox.Show("다시 입력해 주세요.");
+                }
+            }
         }
     }
 }

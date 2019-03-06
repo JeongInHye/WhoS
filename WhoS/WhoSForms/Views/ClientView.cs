@@ -19,6 +19,7 @@ namespace WhoSForms.Views
         private Label lblClientList;
         private ListView listClient;
         private Button btnClientAdd, btnClientEdit, btnClientDelete;
+        private WebAPI webAPI;
 
         public ClientView(Form parentForm)
         {
@@ -40,10 +41,15 @@ namespace WhoSForms.Views
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(900, 500));
             hashtable.Add("point", new Point(50, 90));
+            hashtable.Add("click", (MouseEventHandler)listClient_click);
             listClient = draw.getListView_FullSelect(hashtable, parentForm);
-            listClient.Columns.Add("", 0, HorizontalAlignment.Center);
-            listClient.Columns.Add("번호", 50, HorizontalAlignment.Center);
-            listClient.Columns.Add("거래처 명", 240, HorizontalAlignment.Center);
+            listClient.Columns.Add("번호", 0, HorizontalAlignment.Center);
+            listClient.Columns.Add("거래처 명", 200, HorizontalAlignment.Center);
+            listClient.Columns.Add("대표자", 150, HorizontalAlignment.Center);
+            listClient.Columns.Add("전화번호", 240, HorizontalAlignment.Center);
+            listClient.Columns.Add("주소", 300, HorizontalAlignment.Center);
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Client/Select", listClient);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(250, 60));
@@ -76,12 +82,29 @@ namespace WhoSForms.Views
             btnClientDelete = draw.getButton(hashtable, parentForm);
         }
 
+        private void listClient_click(object sender, EventArgs e)
+        {
+            //api = new WebAPI();
+
+            listClient = (ListView)sender;
+            ListView.SelectedListViewItemCollection itemGroup = listClient.SelectedItems;
+            ListViewItem cNoitem = itemGroup[0];
+
+            string cNo = cNoitem.SubItems[0].Text;
+
+            MessageBox.Show(cNo);
+
+            //hashtable = new Hashtable();
+            //hashtable.Add("cNo", cNo);
+            //api.PostListview(Program.serverUrl + "Menu/nameSelect", hashtable, listMenu);
+        }
+
         private void ClientAdd_Click(object sender, EventArgs e)
         {
-            ClientAddForm clientAddForm = new ClientAddForm();
+            ClientAddForm clientAddForm = new ClientAddForm(parentForm);
 
             clientAddForm.StartPosition = FormStartPosition.Manual;
-            clientAddForm.Location = new Point(parentForm.Location.X+ 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
+            clientAddForm.Location = new Point(parentForm.Location.X + 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
             clientAddForm.ShowDialog();
         }
 
