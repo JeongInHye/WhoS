@@ -35,6 +35,10 @@ namespace WhoSForms
                     return GetLocationLoad;
                 case "client":
                     return GetClientLoad;
+                case "clientAdd":
+                    return GetClientAddLoad;
+                case "clientEdit":
+                    return GetClientEditLoad;
                 case "income":
                     return GetIncomeLoad;
                 default:
@@ -86,6 +90,28 @@ namespace WhoSForms
             parentForm.Size = new Size(500, 500);
             parentForm.FormBorderStyle = FormBorderStyle.None;
             new ClientView(parentForm);
+        }
+
+        private void GetClientAddLoad(object o, EventArgs a)
+        {
+            parentForm.IsMdiContainer = false;
+            parentForm.Size = new Size(550, 650);
+            parentForm.MinimizeBox = false;
+            parentForm.MaximizeBox = false;
+            parentForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            parentForm.Text = "거래처 추가";
+            new ClientAddView(parentForm);
+        }
+
+        private void GetClientEditLoad(object o, EventArgs a)
+        {
+            parentForm.IsMdiContainer = false;
+            parentForm.Size = new Size(550, 650);
+            parentForm.MinimizeBox = false;
+            parentForm.MaximizeBox = false;
+            parentForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            parentForm.Text = "거래처 수정";
+            new ClientEditView(parentForm);
         }
 
         private void GetIncomeLoad(object o, EventArgs a)

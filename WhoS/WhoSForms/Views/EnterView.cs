@@ -34,7 +34,7 @@ namespace WhoSForms.Views
             hashtable.Add("width", 100);
             hashtable.Add("point", new Point(50, 50));
             hashtable.Add("font", new Font("맑은 고딕", 15, FontStyle.Bold));
-            hashtable.Add("name", "주문번호");
+            hashtable.Add("name", "lblClientList");
             lblClientList = draw.getLabel(hashtable, parentForm);
 
             hashtable = new Hashtable();
@@ -42,7 +42,7 @@ namespace WhoSForms.Views
             hashtable.Add("width", 100);
             hashtable.Add("point", new Point(450, 50));
             hashtable.Add("font", new Font("맑은 고딕", 15, FontStyle.Bold));
-            hashtable.Add("name", "주문번호");
+            hashtable.Add("name", "lblresList");
             lblresList = draw.getLabel(hashtable, parentForm);
 
             hashtable = new Hashtable();

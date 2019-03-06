@@ -15,7 +15,8 @@ namespace WhoSForms.Views
         private Form parentForm;
         private Draw draw;
         private Hashtable hashtable;
-        private Button btnLocation;
+        private Button btnLocation, btnAllLocation;
+        private ListView listLocation;
 
         public LocationView(Form parentForm)
         {
@@ -26,6 +27,36 @@ namespace WhoSForms.Views
 
         void getView()
         {
+            LocationButton();
+
+            hashtable = new Hashtable();
+            hashtable.Add("size", new Size(600, 500));
+            hashtable.Add("point", new Point(710, 90));
+            listLocation = draw.getListView(hashtable, parentForm);
+            listLocation.Columns.Add("", 0, HorizontalAlignment.Center);
+            listLocation.Columns.Add("번호", 50, HorizontalAlignment.Center);
+            listLocation.Columns.Add("거래처 명", 220, HorizontalAlignment.Center);
+            listLocation.Columns.Add("입고일", 165, HorizontalAlignment.Center);
+            listLocation.Columns.Add("출고 예정일", 165, HorizontalAlignment.Center);
+
+            hashtable = new Hashtable();
+            hashtable.Add("size", new Size(190, 50));
+            hashtable.Add("point", new Point(1120, 600));
+            hashtable.Add("color", Color.FromArgb(71, 70, 68));
+            hashtable.Add("name", "btnAllLocation");
+            hashtable.Add("text", "전체 적재정보 보기");
+            hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
+            hashtable.Add("click", (EventHandler)AllLocation_Click);
+            btnAllLocation = draw.getButton(hashtable, parentForm);
+        }
+
+        private void AllLocation_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("전체 적재정보");
+        }
+
+        void LocationButton()
+        {
             int count = 0;
             for (int i = 0; i < 6; i++)
             {
@@ -34,16 +65,16 @@ namespace WhoSForms.Views
                     count++;
                     hashtable = new Hashtable();
                     hashtable.Add("size", new Size(80, 80));
-                    if (i >= 2 && i <= 3 )
+                    if (i >= 2 && i <= 3)
                     {
-                        hashtable.Add("point", new Point(100 + (90 * j), 110 + (90 * i)));
+                        hashtable.Add("point", new Point(100 + (90 * j), 80 + (90 * i)));
                     }
                     else if (i >= 4 && i <= 5)
                     {
-                        hashtable.Add("point", new Point(100 + (90 * j), 140 + (90 * i)));
+                        hashtable.Add("point", new Point(100 + (90 * j), 110 + (90 * i)));
                     }
                     else
-                    hashtable.Add("point", new Point(100 + (90 * j), 80 + (90 * i)));
+                        hashtable.Add("point", new Point(100 + (90 * j), 60 + (90 * i)));
                     hashtable.Add("color", Color.FromArgb(175, 171, 171));
                     hashtable.Add(string.Format("name", "{0}"), count);
                     hashtable.Add(string.Format("text", "{0}"), count);
@@ -56,7 +87,9 @@ namespace WhoSForms.Views
 
         private void Location_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(btnLocation.Text.ToString());
+            Button button = (Button)sender;
+
+            MessageBox.Show(button.Name);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WhoSForms.Forms;
 using WhoSForms.Modules;
 
 namespace WhoSForms.Views
@@ -75,19 +76,27 @@ namespace WhoSForms.Views
             btnClientDelete = draw.getButton(hashtable, parentForm);
         }
 
-        private void ClientDelete_Click(object sender, EventArgs e)
+        private void ClientAdd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("거래처 삭제");
+            ClientAddForm clientAddForm = new ClientAddForm();
+
+            clientAddForm.StartPosition = FormStartPosition.Manual;
+            clientAddForm.Location = new Point(parentForm.Location.X+ 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
+            clientAddForm.ShowDialog();
         }
 
         private void ClientEdit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("거래처 수정");
+            ClientEditForm clientEditForm = new ClientEditForm();
+
+            clientEditForm.StartPosition = FormStartPosition.Manual;
+            clientEditForm.Location = new Point(parentForm.Location.X + 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
+            clientEditForm.ShowDialog();
         }
 
-        private void ClientAdd_Click(object sender, EventArgs e)
+        private void ClientDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("거래처 추가");
+            MessageBox.Show("거래처 삭제");
         }
     }
 }
