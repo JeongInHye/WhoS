@@ -54,7 +54,7 @@ namespace WhoSForms.View
             hashtable.Add("text", "메인화면");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Main_Click);
-            btn_main = draw.getButton_menu(hashtable, pnl_head);
+            btn_main = draw.getButton(hashtable, pnl_head);
             btn_main.ForeColor = Color.FromArgb(71, 70, 68);
 
             hashtable = new Hashtable();
@@ -65,7 +65,7 @@ namespace WhoSForms.View
             hashtable.Add("text", "입고");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Enter_Click);
-            btn_enter = draw.getButton_menu(hashtable, pnl_head);
+            btn_enter = draw.getButton(hashtable, pnl_head);
 
 
             hashtable = new Hashtable();
@@ -76,7 +76,7 @@ namespace WhoSForms.View
             hashtable.Add("text", "출고");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Out_Click);
-            btn_out = draw.getButton_menu(hashtable, pnl_head);
+            btn_out = draw.getButton(hashtable, pnl_head);
             btn_out.ForeColor = Color.FromArgb(240, 240, 240);
 
             hashtable = new Hashtable();
@@ -87,7 +87,7 @@ namespace WhoSForms.View
             hashtable.Add("text", "적재정보");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Location_Click);
-            btn_location = draw.getButton_menu(hashtable, pnl_head);
+            btn_location = draw.getButton(hashtable, pnl_head);
             btn_location.ForeColor = Color.FromArgb(240, 240, 240);
 
             hashtable = new Hashtable();
@@ -98,7 +98,7 @@ namespace WhoSForms.View
             hashtable.Add("text", "거래처");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Client_Click);
-            btn_client = draw.getButton_menu(hashtable, pnl_head);
+            btn_client = draw.getButton(hashtable, pnl_head);
             btn_client.ForeColor = Color.FromArgb(240, 240, 240);
 
             hashtable = new Hashtable();
@@ -109,7 +109,7 @@ namespace WhoSForms.View
             hashtable.Add("text", "매출");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Income_Click);
-            btn_income = draw.getButton_menu(hashtable, pnl_head);
+            btn_income = draw.getButton(hashtable, pnl_head);
             btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();

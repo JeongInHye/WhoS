@@ -58,7 +58,7 @@ namespace WhoSForms.Views
             hashtable.Add("text", "조회");
             hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
             hashtable.Add("click", (EventHandler)Enter_Click);
-            btnSelect = draw.getButton_menu(hashtable, parentForm);
+            btnSelect = draw.getButton(hashtable, parentForm);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(900, 550));

@@ -48,25 +48,25 @@ namespace WhoSForms.Modules
             return label;
         }
 
-        public Button getButton(Hashtable hashtable, Control parentDomain)
-        {
-            Button button = new Button();
-            button.TabStop = false;
-            button.FlatStyle = FlatStyle.Flat;
-            button.FlatAppearance.BorderSize = 0;
-            button.Size = (Size)hashtable["size"];
-            button.Location = (Point)hashtable["point"];
-            button.BackColor = (Color)hashtable["color"];
-            button.Name = hashtable["name"].ToString();
-            button.Text = hashtable["text"].ToString();
-            button.Font = (Font)hashtable["font"];
-            button.Click += (EventHandler)hashtable["click"];
-            button.Cursor = Cursors.Hand;
-            parentDomain.Controls.Add(button);
-            return button;
-        }
+        //public Button getButton(Hashtable hashtable, Control parentDomain)
+        //{
+        //    Button button = new Button();
+        //    button.TabStop = false;
+        //    button.FlatStyle = FlatStyle.Flat;
+        //    button.FlatAppearance.BorderSize = 0;
+        //    button.Size = (Size)hashtable["size"];
+        //    button.Location = (Point)hashtable["point"];
+        //    button.BackColor = (Color)hashtable["color"];
+        //    button.Name = hashtable["name"].ToString();
+        //    button.Text = hashtable["text"].ToString();
+        //    button.Font = (Font)hashtable["font"];
+        //    button.Click += (EventHandler)hashtable["click"];
+        //    button.Cursor = Cursors.Hand;
+        //    parentDomain.Controls.Add(button);
+        //    return button;
+        //}
 
-        public Button getButton_menu(Hashtable hashtable, Control parentDomain)
+        public Button getButton(Hashtable hashtable, Control parentDomain)
         {
             Button button = new Button();
             button.TabStop = false;
@@ -139,7 +139,7 @@ namespace WhoSForms.Modules
             //listView.BackColor = (Color)hashtable["color"];
             //listView.Name = hashtable["name"].ToString();
             listView.MouseClick += (MouseEventHandler)hashtable["click"];
-            listView.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
+            listView.Font = new Font("맑은 고딕", 13, FontStyle.Bold);
             parentDomain.Controls.Add(listView);
             return listView;
         }

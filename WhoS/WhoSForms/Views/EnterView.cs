@@ -68,13 +68,16 @@ namespace WhoSForms.Views
             hashtable.Add("text", "조회");
             hashtable.Add("font", new Font("맑은 고딕", 13));
             hashtable.Add("click", (EventHandler)Select_Click);
-            btnSelect = draw.getButton_menu(hashtable, parentForm);
+            btnSelect = draw.getButton(hashtable, parentForm);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(300, 500));
             hashtable.Add("point", new Point(50, 90));
             //hashtable.Add("click", (EventHandler)ListOne_Click);
             listOne = draw.getListView_FullSelect(hashtable, parentForm);
+            listOne.Columns.Add("", 0, HorizontalAlignment.Center);
+            listOne.Columns.Add("번호", 50, HorizontalAlignment.Center);
+            listOne.Columns.Add("거래처 명", 240, HorizontalAlignment.Center);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(870, 500));
@@ -89,7 +92,7 @@ namespace WhoSForms.Views
             hashtable.Add("text", "전체 입고정보 보기");
             hashtable.Add("font", new Font("맑은 고딕", 13,FontStyle.Bold));
             hashtable.Add("click", (EventHandler)Select_Click);
-            btnAllList = draw.getButton_menu(hashtable, parentForm);
+            btnAllList = draw.getButton(hashtable, parentForm);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(80, 50));
@@ -99,17 +102,17 @@ namespace WhoSForms.Views
             hashtable.Add("text", "입고정보"+"\n"+"직접추가");
             hashtable.Add("font", new Font("맑은 고딕", 10,FontStyle.Bold));
             hashtable.Add("click", (EventHandler)Select_Click);
-            btnEnterAdd = draw.getButton_menu(hashtable, parentForm);
+            btnEnterAdd = draw.getButton(hashtable, parentForm);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(100, 50));
             hashtable.Add("point", new Point(1220, 600));
-            hashtable.Add("color", Color.FromArgb(71, 70, 68));
+            hashtable.Add("color", Color.FromArgb(47, 85, 151));
             hashtable.Add("name", "btnEnter");
             hashtable.Add("text", "적재");
             hashtable.Add("font", new Font("맑은 고딕", 13,FontStyle.Bold));
             hashtable.Add("click", (EventHandler)Select_Click);
-            btnLocationAdd = draw.getButton_menu(hashtable, parentForm);
+            btnLocationAdd = draw.getButton(hashtable, parentForm);
         }
 
         private void Select_Click(object sender, EventArgs e)
