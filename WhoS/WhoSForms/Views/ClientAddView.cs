@@ -27,7 +27,6 @@ namespace WhoSForms.Views
             draw = new Draw();
             getView();
         }
-
         void getView()
         {
             hashtable = new Hashtable();

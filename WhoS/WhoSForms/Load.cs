@@ -13,10 +13,17 @@ namespace WhoSForms
     class Load
     {
         private Form parentForm;
+        private string clientNum;
 
         public Load(Form parentForm)
         {
+            this.parentForm = parentForm;   
+        }
+
+        public Load(Form parentForm, string clientNum)
+        {
             this.parentForm = parentForm;
+            this.clientNum = clientNum;
         }
 
         public EventHandler GetHandler(string viewName)
@@ -111,7 +118,7 @@ namespace WhoSForms
             parentForm.MaximizeBox = false;
             parentForm.FormBorderStyle = FormBorderStyle.FixedSingle;
             parentForm.Text = "거래처 수정";
-            new ClientEditView(parentForm);
+            new ClientEditView(parentForm,clientNum);
         }
 
         private void GetIncomeLoad(object o, EventArgs a)

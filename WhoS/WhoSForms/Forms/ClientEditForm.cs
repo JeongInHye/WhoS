@@ -12,10 +12,10 @@ namespace WhoSForms.Forms
 {
     public partial class ClientEditForm : Form
     {
-        public ClientEditForm()
+        public ClientEditForm(string clientNum)
         {
             InitializeComponent();
-            Load load = new Load(this);
+            Load load = new Load(this,clientNum);
             Load += load.GetHandler("clientEdit");
         }
     }

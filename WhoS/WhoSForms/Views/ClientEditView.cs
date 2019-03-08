@@ -18,6 +18,15 @@ namespace WhoSForms.Views
         private Label lblName, lblPName, lblCall, lblAddress, lblID, lblPassword;
         private TextBox tboxName, tboxPName, tboxCall, tboxAddress, tboxID, tboxPassword;
         private Button btnEdit, btnCancel;
+        private string clientNum;
+
+        public ClientEditView(Form parentForm, string clientNum)
+        {
+            this.parentForm = parentForm;
+            this.clientNum = clientNum;
+            draw = new Draw();
+            getView();
+        }
 
         public ClientEditView(Form parentForm)
         {
@@ -146,7 +155,7 @@ namespace WhoSForms.Views
 
         private void Edit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("수정 완료");
+            
         }
     }
 }

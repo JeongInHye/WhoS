@@ -20,6 +20,7 @@ namespace WhoSForms.Views
         private ListView listClient;
         private Button btnClientAdd, btnClientEdit, btnClientDelete;
         private WebAPI webAPI;
+        private string clientNum = "";
 
         public ClientView(Form parentForm)
         {
@@ -84,19 +85,13 @@ namespace WhoSForms.Views
 
         private void listClient_click(object sender, EventArgs e)
         {
-            //api = new WebAPI();
-
             listClient = (ListView)sender;
             ListView.SelectedListViewItemCollection itemGroup = listClient.SelectedItems;
             ListViewItem cNoitem = itemGroup[0];
 
-            string cNo = cNoitem.SubItems[0].Text;
+            clientNum = cNoitem.SubItems[0].Text;
 
-            MessageBox.Show(cNo);
-
-            //hashtable = new Hashtable();
-            //hashtable.Add("cNo", cNo);
-            //api.PostListview(Program.serverUrl + "Menu/nameSelect", hashtable, listMenu);
+            ClientEditForm clientEditForm = new ClientEditForm(clientNum);
         }
 
         private void ClientAdd_Click(object sender, EventArgs e)
@@ -110,15 +105,27 @@ namespace WhoSForms.Views
 
         private void ClientEdit_Click(object sender, EventArgs e)
         {
-            ClientEditForm clientEditForm = new ClientEditForm();
+            if (clientNum == "")
+            {
+                MessageBox.Show("수정할 거래처를 선택해 주세요");
+            }
+            else
+            {
+                ClientEditForm clientEditForm = new ClientEditForm(clientNum);
 
-            clientEditForm.StartPosition = FormStartPosition.Manual;
-            clientEditForm.Location = new Point(parentForm.Location.X + 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
-            clientEditForm.ShowDialog();
+                clientEditForm.StartPosition = FormStartPosition.Manual;
+                clientEditForm.Location = new Point(parentForm.Location.X + 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
+                clientEditForm.ShowDialog();
+            }
         }
 
         private void ClientDelete_Click(object sender, EventArgs e)
         {
+            //api = new WebAPI();
+            //Hashtable ht = new Hashtable();
+            //ht.Add("oNo", selectOrder);
+            //api.Post(Program.serverUrl + "orderlist/deleteOrder", ht);
+            //this.tt();
             MessageBox.Show("거래처 삭제");
         }
     }
