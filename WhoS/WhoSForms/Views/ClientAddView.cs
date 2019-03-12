@@ -14,6 +14,7 @@ namespace WhoSForms.Views
 {
     class ClientAddView
     {
+        private ClientView clientView;
         private Form parentForm;
         private Draw draw;
         private Hashtable hashtable;
@@ -27,6 +28,15 @@ namespace WhoSForms.Views
             draw = new Draw();
             getView();
         }
+
+        public ClientAddView(Form parentForm,ClientView clientView)
+        {
+            this.parentForm = parentForm;
+            this.clientView = clientView;
+            draw = new Draw();
+            getView();
+        }
+
         void getView()
         {
             hashtable = new Hashtable();
@@ -157,11 +167,11 @@ namespace WhoSForms.Views
                 NameValueCollection nameValue = new NameValueCollection();
 
                 nameValue.Add("Name", tboxName.Text);
-                nameValue.Add("pName", tboxName.Text);
-                nameValue.Add("Call", tboxName.Text);
-                nameValue.Add("Address", tboxName.Text);
-                nameValue.Add("ID", tboxName.Text);
-                nameValue.Add("Password", tboxName.Text);
+                nameValue.Add("pName", tboxPName.Text);
+                nameValue.Add("Call", tboxCall.Text);
+                nameValue.Add("Address", tboxAddress.Text);
+                nameValue.Add("ID", tboxID.Text);
+                nameValue.Add("Password", tboxPassword.Text);
 
                 byte[] result = wc.UploadValues(Program.serverUrl + "Client/Add", "POST", nameValue);
                 string resultStr = Encoding.UTF8.GetString(result);
@@ -170,6 +180,7 @@ namespace WhoSForms.Views
                 {
                     MessageBox.Show("거래처 추가 완료");
                     parentForm.Close();
+                    //clientView.list();   
                 }
                 else
                 {

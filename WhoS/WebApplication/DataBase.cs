@@ -31,16 +31,14 @@ namespace WhoSWebAPI
             try
             {
                 conn.Open();
-                this.connection = conn;
-                Console.WriteLine("------------------------------------------db성공");
+                connection = conn;
                 return true;
 
             }
             catch
             {
                 conn.Close();
-                this.connection = null;
-                Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXdb실패");
+                connection = null;
                 return false;
             }
         }

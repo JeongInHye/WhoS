@@ -12,6 +12,7 @@ namespace WhoSForms.Views
 {
     class OutView
     {
+        private WebAPI webAPI;
         private Form parentForm;
         private Draw draw;
         private Hashtable hashtable;
@@ -74,10 +75,11 @@ namespace WhoSForms.Views
             hashtable.Add("size", new Size(300, 500));
             hashtable.Add("point", new Point(50, 90));
             //hashtable.Add("click", (EventHandler)ListOne_Click);
-            listOne = draw.getListView_FullSelect(hashtable, parentForm);   
+            listOne = draw.getListView_FullSelect(hashtable, parentForm);
             listOne.Columns.Add("", 0, HorizontalAlignment.Center);
-            listOne.Columns.Add("번호", 50, HorizontalAlignment.Center);
-            listOne.Columns.Add("거래처 명", 240, HorizontalAlignment.Center);
+            listOne.Columns.Add("거래처 명", 290, HorizontalAlignment.Center);
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Enter/ClientName", listOne);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(870, 500));

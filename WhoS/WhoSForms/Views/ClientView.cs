@@ -11,7 +11,7 @@ using WhoSForms.Modules;
 
 namespace WhoSForms.Views
 {
-    class ClientView
+    public class ClientView
     {
         private Form parentForm;
         private Draw draw;
@@ -90,7 +90,7 @@ namespace WhoSForms.Views
             ListViewItem cNoitem = itemGroup[0];
 
             clientNum = cNoitem.SubItems[0].Text;
-
+            
             ClientEditForm clientEditForm = new ClientEditForm(clientNum);
         }
 
@@ -121,12 +121,37 @@ namespace WhoSForms.Views
 
         private void ClientDelete_Click(object sender, EventArgs e)
         {
-            //api = new WebAPI();
-            //Hashtable ht = new Hashtable();
-            //ht.Add("oNo", selectOrder);
-            //api.Post(Program.serverUrl + "orderlist/deleteOrder", ht);
-            //this.tt();
-            MessageBox.Show("거래처 삭제");
+            webAPI = new WebAPI();
+            string cNo = "";
+            bool one = true;
+
+            foreach (ListViewItem listitem in listClient.Items)
+            {
+                if (listClient.Items.Count > 0)
+                {
+                    for (int i = listClient.Items.Count - 1; i >= 0; i--)
+                    {
+                        if (listClient.Items[i].Selected == true)
+                        {
+                            cNo = clientNum;
+                            hashtable = new Hashtable();
+                            hashtable.Add("cNo", cNo);
+                            webAPI.Post(Program.serverUrl + "Client/Delete", hashtable);
+                            if (one)
+                            {
+                                MessageBox.Show("거래처 삭제");
+                                one = false;
+                            }
+                            listClient.Items[i].Remove();
+                        }
+                    }
+                }
+            }
+        }
+
+        public void list()
+        {
+            webAPI.ListView(Program.serverUrl + "Client/Select", listClient);
         }
     }
 }

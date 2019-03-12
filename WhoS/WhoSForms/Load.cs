@@ -14,6 +14,7 @@ namespace WhoSForms
     {
         private Form parentForm;
         private string clientNum;
+        private ClientView clientView;
 
         public Load(Form parentForm)
         {
@@ -24,6 +25,12 @@ namespace WhoSForms
         {
             this.parentForm = parentForm;
             this.clientNum = clientNum;
+        }
+
+        public Load(Form parentForm,ClientView clientView)
+        {
+            this.parentForm = parentForm;
+            this.clientView = clientView;
         }
 
         public EventHandler GetHandler(string viewName)
@@ -107,7 +114,7 @@ namespace WhoSForms
             parentForm.MaximizeBox = false;
             parentForm.FormBorderStyle = FormBorderStyle.FixedSingle;
             parentForm.Text = "거래처 추가";
-            new ClientAddView(parentForm);
+            new ClientAddView(parentForm,clientView);
         }
 
         private void GetClientEditLoad(object o, EventArgs a)

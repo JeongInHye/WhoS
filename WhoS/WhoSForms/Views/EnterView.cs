@@ -12,6 +12,7 @@ namespace WhoSForms.Views
 {
     class EnterView
     {
+        private WebAPI webAPI;
         private Form parentForm;
         private Draw draw;
         private Hashtable hashtable;
@@ -73,16 +74,26 @@ namespace WhoSForms.Views
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(300, 500));
             hashtable.Add("point", new Point(50, 90));
-            //hashtable.Add("click", (EventHandler)ListOne_Click);
+            hashtable.Add("click", (MouseEventHandler)ListOne_Click);
             listOne = draw.getListView_FullSelect(hashtable, parentForm);
             listOne.Columns.Add("", 0, HorizontalAlignment.Center);
-            listOne.Columns.Add("번호", 50, HorizontalAlignment.Center);
-            listOne.Columns.Add("거래처 명", 240, HorizontalAlignment.Center);
+            listOne.Columns.Add("거래처 명", 290, HorizontalAlignment.Center);
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Enter/ClientName", listOne);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(870, 500));
             hashtable.Add("point", new Point(450, 90));
             listTwo = draw.getListView_Check(hashtable, parentForm);
+            listTwo.Columns.Add("", 20, HorizontalAlignment.Center);
+            listTwo.Columns.Add("거래처", 180, HorizontalAlignment.Center);
+            listTwo.Columns.Add("물품명", 180, HorizontalAlignment.Center);
+            listTwo.Columns.Add("중량", 100, HorizontalAlignment.Center);
+            listTwo.Columns.Add("입고예정일", 180, HorizontalAlignment.Center);
+            listTwo.Columns.Add("발행번호", 100, HorizontalAlignment.Center);
+            listTwo.Columns.Add("비고", 100, HorizontalAlignment.Center);
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Enter/EnterAllSelect", listTwo);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(190, 50));
@@ -96,7 +107,7 @@ namespace WhoSForms.Views
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(80, 50));
-            hashtable.Add("point", new Point(900, 600));
+            hashtable.Add("point", new Point(1120, 600));
             hashtable.Add("color", Color.FromArgb(71, 70, 68));
             hashtable.Add("name", "btnEnterAdd");
             hashtable.Add("text", "입고정보"+"\n"+"직접추가");
@@ -115,9 +126,25 @@ namespace WhoSForms.Views
             btnLocationAdd = draw.getButton(hashtable, parentForm);
         }
 
+        private void ListOne_Click(object sender, EventArgs e)
+        {
+            webAPI = new WebAPI();
+
+            listOne = (ListView)sender;
+            ListView.SelectedListViewItemCollection itemGroup = listOne.SelectedItems;
+            ListViewItem cNoitem = itemGroup[0];
+
+            string cName = cNoitem.SubItems[1].Text;
+
+            hashtable = new Hashtable();
+            hashtable.Add("cName", cName);
+            webAPI.PostListview(Program.serverUrl + "Enter/ClientNameSelect", hashtable, listTwo);
+        }
+
         private void Select_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("조회");
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Enter/EnterAllSelect", listTwo);
         }
     }
 }
