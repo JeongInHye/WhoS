@@ -7,17 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WhoSForms.Views;
 
 namespace WhoSForms.Forms
 {
-    public partial class ClientAddForm : Form
+    public partial class LocationAddForm : Form
     {
-        public ClientAddForm(Form parentForm)
+        public LocationAddForm(string pNum)
         {
             InitializeComponent();
-            Load load = new Load(this);
-            Load += load.GetHandler("clientAdd");
+            Load load = new Load(this, pNum);
+            Load += load.GetHandler("locationAdd");
         }
     }
 }

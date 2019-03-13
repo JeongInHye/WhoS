@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WhoSForms.Forms;
 using WhoSForms.Modules;
 
 namespace WhoSForms.Views
@@ -20,6 +21,7 @@ namespace WhoSForms.Views
         private TextBox txtNum;
         private ListView listOne, listTwo;
         private Button btnSelect, btnAllList, btnEnterAdd, btnLocationAdd;
+        private string pNum;
 
         public EnterView(Form parentForm)
         {
@@ -84,13 +86,14 @@ namespace WhoSForms.Views
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(870, 500));
             hashtable.Add("point", new Point(450, 90));
-            listTwo = draw.getListView_Check(hashtable, parentForm);
-            listTwo.Columns.Add("", 20, HorizontalAlignment.Center);
+            hashtable.Add("click", (MouseEventHandler)listTwo_click);
+            listTwo = draw.getListView_FullSelect(hashtable, parentForm);
+            listTwo.Columns.Add("", 0, HorizontalAlignment.Center);
             listTwo.Columns.Add("거래처", 180, HorizontalAlignment.Center);
             listTwo.Columns.Add("물품명", 180, HorizontalAlignment.Center);
             listTwo.Columns.Add("중량", 100, HorizontalAlignment.Center);
             listTwo.Columns.Add("입고예정일", 180, HorizontalAlignment.Center);
-            listTwo.Columns.Add("발행번호", 100, HorizontalAlignment.Center);
+            listTwo.Columns.Add("발행번호", 125, HorizontalAlignment.Center);
             listTwo.Columns.Add("비고", 100, HorizontalAlignment.Center);
             webAPI = new WebAPI();
             webAPI.ListView(Program.serverUrl + "Enter/EnterAllSelect", listTwo);
@@ -101,19 +104,19 @@ namespace WhoSForms.Views
             hashtable.Add("color", Color.FromArgb(71, 70, 68));
             hashtable.Add("name", "btnAllList");
             hashtable.Add("text", "전체 입고정보 보기");
-            hashtable.Add("font", new Font("맑은 고딕", 13,FontStyle.Bold));
-            hashtable.Add("click", (EventHandler)Select_Click);
+            hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
+            hashtable.Add("click", (EventHandler)AllList_Click);
             btnAllList = draw.getButton(hashtable, parentForm);
 
-            hashtable = new Hashtable();
-            hashtable.Add("size", new Size(80, 50));
-            hashtable.Add("point", new Point(1120, 600));
-            hashtable.Add("color", Color.FromArgb(71, 70, 68));
-            hashtable.Add("name", "btnEnterAdd");
-            hashtable.Add("text", "입고정보"+"\n"+"직접추가");
-            hashtable.Add("font", new Font("맑은 고딕", 10,FontStyle.Bold));
-            hashtable.Add("click", (EventHandler)Select_Click);
-            btnEnterAdd = draw.getButton(hashtable, parentForm);
+            //hashtable = new Hashtable();
+            //hashtable.Add("size", new Size(80, 50));
+            //hashtable.Add("point", new Point(1120, 600));
+            //hashtable.Add("color", Color.FromArgb(71, 70, 68));
+            //hashtable.Add("name", "btnEnterAdd");
+            //hashtable.Add("text", "입고정보"+"\n"+"직접추가");
+            //hashtable.Add("font", new Font("맑은 고딕", 10,FontStyle.Bold));
+            //hashtable.Add("click", (EventHandler)EnterAddt_Click);
+            //btnEnterAdd = draw.getButton(hashtable, parentForm);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(100, 50));
@@ -121,9 +124,74 @@ namespace WhoSForms.Views
             hashtable.Add("color", Color.FromArgb(47, 85, 151));
             hashtable.Add("name", "btnEnter");
             hashtable.Add("text", "적재");
-            hashtable.Add("font", new Font("맑은 고딕", 13,FontStyle.Bold));
-            hashtable.Add("click", (EventHandler)Select_Click);
+            hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
+            hashtable.Add("click", (EventHandler)LocationAdd_Click);
             btnLocationAdd = draw.getButton(hashtable, parentForm);
+        }
+
+        private void listTwo_click(object sender, MouseEventArgs e)
+        {
+            listTwo = (ListView)sender;
+            ListView.SelectedListViewItemCollection itemGroup = listTwo.SelectedItems;
+            ListViewItem cNoitem = itemGroup[0];
+
+            pNum = cNoitem.SubItems[5].Text;
+
+            //LocationAddForm locationAddForm = new LocationAddForm(pNum);
+            //ClientEditForm clientEditForm = new ClientEditForm(clientNum);
+        }
+
+        private void LocationAdd_Click(object sender, EventArgs e)
+        {
+            webAPI = new WebAPI();
+            bool one = true;
+            LocationAddForm locationAddForm;
+
+            foreach (ListViewItem listitem in listTwo.Items)
+            {
+                if (listTwo.Items.Count > 0)
+                {
+                    for (int i = listTwo.Items.Count - 1; i >= 0; i--)
+                    {
+                        if (listTwo.Items[i].Selected == true)
+                        {
+                            //cNo = clientNum;
+                            //hashtable = new Hashtable();
+                            //hashtable.Add("cNo", cNo);
+                            //webAPI.Post(Program.serverUrl + "Client/Delete", hashtable);
+                            //if (one)
+                            //{
+                            //    MessageBox.Show("거래처 삭제");
+                            //    one = false;
+                            //}
+                            locationAddForm = new LocationAddForm(pNum);
+                            locationAddForm.StartPosition = FormStartPosition.CenterParent;
+                            locationAddForm.ShowDialog();
+
+                            List();
+
+                            listTwo.Items[i].Remove();
+                        }
+                    }
+                }
+            }
+        }
+
+        //private void EnterAddt_Click(object sender, EventArgs e)
+        //{
+        //    MessageBox.Show("직접추가");
+        //}
+
+        private void Select_Click(object sender, EventArgs e)
+        {
+            hashtable = new Hashtable();
+            webAPI = new WebAPI();
+
+            hashtable.Add("pNum", txtNum.Text);
+
+            webAPI.PostListview(Program.serverUrl + "Enter/EnterSelectNum", hashtable, listTwo);
+
+            txtNum.Text = "";
         }
 
         private void ListOne_Click(object sender, EventArgs e)
@@ -141,10 +209,16 @@ namespace WhoSForms.Views
             webAPI.PostListview(Program.serverUrl + "Enter/ClientNameSelect", hashtable, listTwo);
         }
 
-        private void Select_Click(object sender, EventArgs e)
+        private void AllList_Click(object sender, EventArgs e)
         {
             webAPI = new WebAPI();
             webAPI.ListView(Program.serverUrl + "Enter/EnterAllSelect", listTwo);
+        }
+
+        private void List()
+        {
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Enter/ClientName", listOne);
         }
     }
 }

@@ -101,6 +101,7 @@ namespace WhoSForms.Views
             clientAddForm.StartPosition = FormStartPosition.Manual;
             clientAddForm.Location = new Point(parentForm.Location.X + 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
             clientAddForm.ShowDialog();
+            list();
         }
 
         private void ClientEdit_Click(object sender, EventArgs e)
@@ -116,6 +117,7 @@ namespace WhoSForms.Views
                 clientEditForm.StartPosition = FormStartPosition.Manual;
                 clientEditForm.Location = new Point(parentForm.Location.X + 500, parentForm.Location.Y + 150/*(parentForm.Height / 2) - (clientAddForm.Height / 2)*/);
                 clientEditForm.ShowDialog();
+                list();
             }
         }
 

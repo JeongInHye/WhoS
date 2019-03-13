@@ -57,6 +57,34 @@ namespace WhoSForms.Modules
             }
         }
 
+        public bool Num(string url)
+        {
+            //try
+            //{
+            WebClient wc = new WebClient();
+            Stream stream = wc.OpenRead(url);
+            StreamReader sr = new StreamReader(stream);
+            string result = sr.ReadToEnd();
+            ArrayList list = JsonConvert.DeserializeObject<ArrayList>(result);
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                JArray jArray = (JArray)list[i];
+                string[] arr = new string[list.Count];
+                for (int j = 0; j < jArray.Count; j++)
+                {
+                    arr[j] = jArray[j].ToString();
+                    //MessageBox.Show(arr[j].ToString());
+                }
+            }
+            return true;
+            //}
+            //catch
+            //{
+            //    //return arr[];
+            //}
+        }
+
         public bool Post(string url, Hashtable ht)
         {
             try

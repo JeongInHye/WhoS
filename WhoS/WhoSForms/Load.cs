@@ -14,7 +14,6 @@ namespace WhoSForms
     {
         private Form parentForm;
         private string clientNum;
-        private ClientView clientView;
 
         public Load(Form parentForm)
         {
@@ -27,12 +26,6 @@ namespace WhoSForms
             this.clientNum = clientNum;
         }
 
-        public Load(Form parentForm,ClientView clientView)
-        {
-            this.parentForm = parentForm;
-            this.clientView = clientView;
-        }
-
         public EventHandler GetHandler(string viewName)
         {
             switch (viewName)
@@ -43,6 +36,8 @@ namespace WhoSForms
                     return GetMainInfoLoad;
                 case "enter":
                     return GetEnterLoad;
+                case "locationAdd":
+                    return GetLocationAddLoad;
                 case "out":
                     return GetOutLoad;
                 case "location":
@@ -85,6 +80,17 @@ namespace WhoSForms
             new EnterView(parentForm);
         }
 
+        private void GetLocationAddLoad(object o, EventArgs a)
+        {
+            parentForm.IsMdiContainer = false;
+            parentForm.Size = new Size(400, 200);
+            parentForm.MinimizeBox = false;
+            parentForm.MaximizeBox = false;
+            parentForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            parentForm.Text = "적재할위치";
+            new LocationAddView(parentForm,clientNum);
+        }
+
         private void GetOutLoad(object o, EventArgs a)
         {
             parentForm.Size = new Size(500, 500);
@@ -114,7 +120,7 @@ namespace WhoSForms
             parentForm.MaximizeBox = false;
             parentForm.FormBorderStyle = FormBorderStyle.FixedSingle;
             parentForm.Text = "거래처 추가";
-            new ClientAddView(parentForm,clientView);
+            new ClientAddView(parentForm);
         }
 
         private void GetClientEditLoad(object o, EventArgs a)

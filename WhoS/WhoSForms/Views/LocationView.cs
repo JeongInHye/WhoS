@@ -12,6 +12,7 @@ namespace WhoSForms.Views
 {
     class LocationView
     {
+        private WebAPI webAPI;
         private Form parentForm;
         private Draw draw;
         private Hashtable hashtable;
@@ -29,15 +30,24 @@ namespace WhoSForms.Views
         {
             LocationButton();
 
+            webAPI = new WebAPI();
+            string[] arr = new string[2];
+             arr =  webAPI.Num(Program.serverUrl + "test/test");
+            MessageBox.Show(arr[0]);
+
+
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(600, 500));
             hashtable.Add("point", new Point(710, 90));
             listLocation = draw.getListView(hashtable, parentForm);
             listLocation.Columns.Add("", 0, HorizontalAlignment.Center);
-            listLocation.Columns.Add("번호", 50, HorizontalAlignment.Center);
-            listLocation.Columns.Add("거래처 명", 220, HorizontalAlignment.Center);
-            listLocation.Columns.Add("입고일", 165, HorizontalAlignment.Center);
+            listLocation.Columns.Add("거래처 명", 120, HorizontalAlignment.Center);
+            listLocation.Columns.Add("물품명", 100, HorizontalAlignment.Center);
+            listLocation.Columns.Add("입고일", 130, HorizontalAlignment.Center);
             listLocation.Columns.Add("출고 예정일", 165, HorizontalAlignment.Center);
+            listLocation.Columns.Add("위치", 80, HorizontalAlignment.Center);
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Location/AllSelect", listLocation);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(190, 50));
@@ -52,7 +62,8 @@ namespace WhoSForms.Views
 
         private void AllLocation_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("전체 적재정보");
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Location/AllSelect", listLocation);
         }
 
         void LocationButton()
@@ -88,8 +99,17 @@ namespace WhoSForms.Views
         private void Location_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            string lNo = button.Name;
 
-            MessageBox.Show(button.Name);
+            webAPI = new WebAPI();
+            hashtable = new Hashtable();
+
+            hashtable.Add("lNo", lNo);
+
+            if(webAPI.PostListview(Program.serverUrl + "Location/LocationBtn", hashtable, listLocation))
+            {
+                lNo = "";
+            }
         }
     }
 }

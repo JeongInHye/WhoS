@@ -14,7 +14,6 @@ namespace WhoSForms.Views
 {
     class ClientAddView
     {
-        private ClientView clientView;
         private Form parentForm;
         private Draw draw;
         private Hashtable hashtable;
@@ -28,15 +27,7 @@ namespace WhoSForms.Views
             draw = new Draw();
             getView();
         }
-
-        public ClientAddView(Form parentForm,ClientView clientView)
-        {
-            this.parentForm = parentForm;
-            this.clientView = clientView;
-            draw = new Draw();
-            getView();
-        }
-
+        
         void getView()
         {
             hashtable = new Hashtable();
@@ -180,7 +171,6 @@ namespace WhoSForms.Views
                 {
                     MessageBox.Show("거래처 추가 완료");
                     parentForm.Close();
-                    //clientView.list();   
                 }
                 else
                 {

@@ -20,6 +20,7 @@ namespace WhoSForms.Views
         private TextBox txtNum;
         private ListView listOne, listTwo;
         private Button btnSelect, btnAllList, btnOutCom;
+        private string pNum;
 
         public OutView(Form parentForm)
         {
@@ -74,7 +75,7 @@ namespace WhoSForms.Views
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(300, 500));
             hashtable.Add("point", new Point(50, 90));
-            //hashtable.Add("click", (EventHandler)ListOne_Click);
+            hashtable.Add("click", (MouseEventHandler)ListOne_Click);
             listOne = draw.getListView_FullSelect(hashtable, parentForm);
             listOne.Columns.Add("", 0, HorizontalAlignment.Center);
             listOne.Columns.Add("거래처 명", 290, HorizontalAlignment.Center);
@@ -84,7 +85,17 @@ namespace WhoSForms.Views
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(870, 500));
             hashtable.Add("point", new Point(450, 90));
-            listTwo = draw.getListView_Check(hashtable, parentForm);
+            hashtable.Add("click", (MouseEventHandler)ListTwo_Click);
+            listTwo = draw.getListView_FullSelect(hashtable, parentForm);
+            listTwo.Columns.Add("", 0, HorizontalAlignment.Center);
+            listTwo.Columns.Add("거래처", 180, HorizontalAlignment.Center);
+            listTwo.Columns.Add("물품명", 180, HorizontalAlignment.Center);
+            listTwo.Columns.Add("중량", 100, HorizontalAlignment.Center);
+            listTwo.Columns.Add("출고예정일", 180, HorizontalAlignment.Center);
+            listTwo.Columns.Add("발행번호", 125, HorizontalAlignment.Center);
+            listTwo.Columns.Add("비고", 100, HorizontalAlignment.Center);
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Out/AllSelect", listTwo);
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(190, 50));
@@ -93,7 +104,7 @@ namespace WhoSForms.Views
             hashtable.Add("name", "btnAllList");
             hashtable.Add("text", "전체 출고정보 보기");
             hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
-            hashtable.Add("click", (EventHandler)Select_Click);
+            hashtable.Add("click", (EventHandler)AllList_Click);
             btnAllList = draw.getButton(hashtable, parentForm);
 
             hashtable = new Hashtable();
@@ -103,13 +114,71 @@ namespace WhoSForms.Views
             hashtable.Add("name", "btnEnter");
             hashtable.Add("text", "출고완료");
             hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
-            hashtable.Add("click", (EventHandler)Select_Click);
+            hashtable.Add("click", (EventHandler)OutCom_Click);
             btnOutCom = draw.getButton(hashtable, parentForm);
+        }
+
+        private void ListTwo_Click(object sender, MouseEventArgs e)
+        {
+            listTwo = (ListView)sender;
+            ListView.SelectedListViewItemCollection itemGroup = listTwo.SelectedItems;
+            ListViewItem cNoitem = itemGroup[0];
+
+            pNum = cNoitem.SubItems[5].Text;
+            MessageBox.Show(pNum);
+        }
+
+        private void OutCom_Click(object sender, EventArgs e)
+        {
+            webAPI = new WebAPI();
+            hashtable = new Hashtable();
+
+            hashtable.Add("pNum", pNum);
+
+            if (webAPI.Post(Program.serverUrl + "Out/OutCom",hashtable))
+            {
+                MessageBox.Show("출고 완료");
+                AllList_Click();
+            }
+        }
+
+        private void AllList_Click()
+        {
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Out/AllSelect", listTwo);
+        }
+
+        private void ListOne_Click(object sender, EventArgs e)
+        {
+            webAPI = new WebAPI();
+
+            listOne = (ListView)sender;
+            ListView.SelectedListViewItemCollection itemGroup = listOne.SelectedItems;
+            ListViewItem cNoitem = itemGroup[0];
+
+            string cName = cNoitem.SubItems[1].Text;
+
+            hashtable = new Hashtable();
+            hashtable.Add("cName", cName);
+            webAPI.PostListview(Program.serverUrl + "Out/ClientNameSelect", hashtable, listTwo);
         }
 
         private void Select_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            hashtable = new Hashtable();
+            webAPI = new WebAPI();
+
+            hashtable.Add("pNum", txtNum.Text);
+
+            webAPI.PostListview(Program.serverUrl + "Out/OutSelectNum", hashtable, listTwo);
+
+            txtNum.Text = "";
+        }
+
+        private void AllList_Click(object sender, EventArgs e)
+        {
+            webAPI = new WebAPI();
+            webAPI.ListView(Program.serverUrl + "Out/AllSelect", listTwo);
         }
     }
 }
