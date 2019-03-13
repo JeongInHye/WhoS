@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSForms", "WhoSForms\WhoS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWebAPI", "WebApplication\WhoSWebAPI.csproj", "{AABC753E-C131-467D-87E9-FBE332C4280D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSWeb", "WebApplication1\WhoSWeb.csproj", "{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWeb", "..\..\..\..\..\Desktop\GduSolution\WebApplication\WhoSWeb.csproj", "{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF29C0D0-1FA4-44DA-85B8-AE8831042DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

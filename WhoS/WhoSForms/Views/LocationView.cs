@@ -30,10 +30,10 @@ namespace WhoSForms.Views
         {
             LocationButton();
 
-            webAPI = new WebAPI();
-            string[] arr = new string[2];
-             arr =  webAPI.Num(Program.serverUrl + "test/test");
-            MessageBox.Show(arr[0]);
+            //webAPI = new WebAPI();
+            //string[] arr = new string[2];
+            // arr =  webAPI.Num(Program.serverUrl + "test/test");
+            //MessageBox.Show(arr[0]);
 
 
             hashtable = new Hashtable();
