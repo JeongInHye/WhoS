@@ -1,0 +1,95 @@
+﻿.tabcontent {
+    color: black;
+    padding: 100px 20px;
+    height: 100%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.8;
+}
+
+.sub2 {
+    width: 70%;
+    transform: translateX(15%);
+}
+
+.button {
+    background-color: #BF9000;
+    color: white;
+    padding: 14px 20px;
+    margin: 5px;
+    margin-bottom: 0px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 20px;
+}
+
+.input {
+    width: 300px;
+    height: 25px;
+    font-size: 25px;
+}
+
+.filter {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.active {
+    background-color: #BF9000;
+}
+
+.head, .list {
+    padding: 0;
+    list-style: none;
+}
+
+.head {
+    height: 35px;
+    background-color: antiquewhite;
+}
+
+.head li div {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 5px;
+}
+        
+.list li {
+    height: 60px;    
+}
+
+.head li div, .list li div {
+    width: calc((100% - 170px) / 3);
+    float: left;    
+}
+
+.list li div {
+    text-align: left;
+}
+
+.head li div:first-child, .list li div:first-child {
+    width: 70px;
+}
+
+.head li div:last-child, .list li div:last-child {
+    width: 100px;
+}
+
+.list li div:last-child button {
+    width: calc(100% - 10px);
+    padding: 10px 0;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.text_center {
+    text-align: center !important;
+}

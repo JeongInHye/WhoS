@@ -1,0 +1,32 @@
+﻿body {
+    height: 100%;
+    margin: 0;
+}
+
+.height {
+    height: 63px;
+    background-color: #474644;
+}
+
+#contents {
+    min-height: calc(100vh - 126px);
+    background-color: #FCFCFC;
+    text-align: center;
+}
+
+.tablink {
+    background-color: #474644;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 17px 16px;
+    font-size: 25px;
+    font-weight: bold;
+    width: 50%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}

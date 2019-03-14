@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSForms", "WhoSForms\WhoS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWebAPI", "WebApplication\WhoSWebAPI.csproj", "{AABC753E-C131-467D-87E9-FBE332C4280D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWeb", "..\..\..\..\..\Desktop\GduSolution\WebApplication\WhoSWeb.csproj", "{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWeb", "WhoSWeb\WhoSWeb.csproj", "{F3233637-2123-4158-8ACE-5A9C429F9DAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AABC753E-C131-467D-87E9-FBE332C4280D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B04141A-6CDE-470C-B438-DB30BEBE7BEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

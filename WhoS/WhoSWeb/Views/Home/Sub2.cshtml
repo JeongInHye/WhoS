@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhoS</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="~/css/common.css" />
+    <link rel="stylesheet" href="~/css/Home/client.css" />
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/Home/sub2.js"></script>
+</head>
+<body>
+    <header id="header" class="height">
+        <button class="tablink">예약하기</button>
+        <button class="tablink active">예약 현황</button>
+    </header>
+    <div id="contents">
+        <div class="sub2" data-ng-app="myApp" data-ng-controller="sub2">
+            <br>
+            <input type="text" class="filter" placeholder="검색하세요." data-ng-model="filter.title">
+            <ul class="head">
+                <li>
+                    <div>번호</div>
+                    <div>이름</div>
+                    <div>제목</div>
+                    <div>작성일</div>
+                    <div>비고</div>
+                </li>
+            </ul>
+            <ul class="list" >
+                <li data-ng-repeat="row in data | filter:filter">
+                    <div class="text_center">{{row.no}}</div>
+                    <div>{{row.name}}</div>
+                    <div>{{row.title}}</div>
+                    <div>{{row.regDate}}</div>
+                    <div><button type="button" data-ng-click="btn(row, $index)">{{row.name}}</button></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer id="footer" class="height">아래글</footer>
+</body>
+</html>
+

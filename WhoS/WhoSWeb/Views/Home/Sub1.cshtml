@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhoS</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/common.css" />
+    <link rel="stylesheet" href="~/css/Home/client.css" />
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/Home/sub1.js"></script>
+</head>
+<body>
+    <header id="header" class="height">
+        <button class="tablink active">예약하기</button>
+        <button class="tablink">예약 현황</button>
+    </header>
+    <div id="contents">
+        <form>
+            <div class="tabcontent">
+                거래처명 :
+                <p>
+                    물품명 : <input type="text" name="name" id="name" class="input" required placeholder="물품명을 입력하세요." />
+                <p>
+                    중&nbsp;&nbsp;량 : <input type="text" name="t" id="t" class="input" required placeholder="중량을 입력하세요." />
+                <p>
+                    입고일 : <input type="date" name="enter" id="enter" class="input" required placeholder="입고일를 입력하세요." />
+                <p>
+                    출고일 : <input type="date" name="outer" id="outer" class="input" required placeholder="출고일를 입력하세요." />
+                <p>
+                    이메일 :  <input type="email" name="email" id="email" class="input" required placeholder="이메일를 입력하세요." />
+                <p>
+                    <input type="submit" value="확인" name="submit" id="button" class="button" />
+                    <input type="reset" value="취소" class="button">
+            </div>
+        </form>
+    </div>
+    <footer id="footer" class="height">아래글</footer>
+</body>
+</html>
