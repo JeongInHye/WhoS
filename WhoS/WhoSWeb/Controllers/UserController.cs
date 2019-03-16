@@ -13,31 +13,24 @@ namespace WebApplication.Controllers
     {
         [Route("User/Login")]
         [HttpPost]
-        public Hashtable Login([FromForm] String id, [FromForm] String password)
+        public ArrayList Login([FromForm] string id, [FromForm] string pw)
         {
-            Hashtable resultMap = new Hashtable();
-
-            if ("root" == id)
+            Hashtable hashtable = new Hashtable();
+            hashtable.Add("@id", id);
+            hashtable.Add("@pw", pw);
+            ArrayList result = new ArrayList();
+            try
             {
-                if ("1234" == password)
-                {
-                    resultMap.Add("state", 1);
-                }
-                else if ("5678" == password)
-                {
-                    resultMap.Add("state", 2);
-                }
-                else
-                {
-                    resultMap.Add("state", 0);
-                }
+                DataBase dataBase = new DataBase();
+                string sql = "sp_WebLogin";
+                result = dataBase.GetArrayList(sql, hashtable);
+                dataBase.Close();
+                return result;
             }
-            else
+            catch
             {
-                resultMap.Add("state", 0);
+                return new ArrayList();
             }
-
-            return resultMap;
         }
     }
 }

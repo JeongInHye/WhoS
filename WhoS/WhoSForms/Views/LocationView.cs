@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,10 +34,7 @@ namespace WhoSForms.Views
         {
             LocationButton();
 
-            //webAPI = new WebAPI();
-            //string[] arr = new string[2];
-            // arr =  webAPI.Num(Program.serverUrl + "test/test");
-            //MessageBox.Show(arr[0]);
+            //Num(Program.serverUrl + "Location/test");
 
 
             hashtable = new Hashtable();
@@ -86,15 +87,40 @@ namespace WhoSForms.Views
                     }
                     else
                         hashtable.Add("point", new Point(100 + (90 * j), 60 + (90 * i)));
-                    hashtable.Add("color", Color.FromArgb(175, 171, 171));
                     hashtable.Add(string.Format("name", "{0}"), count);
                     hashtable.Add(string.Format("text", "{0}"), count);
                     hashtable.Add("font", new Font("맑은 고딕", 13));
                     hashtable.Add("click", (EventHandler)Location_Click);
+
+                    WebClient wc = new WebClient();
+                    Stream stream = wc.OpenRead(Program.serverUrl + "Location/test");
+                    StreamReader sr = new StreamReader(stream);
+                    string result = sr.ReadToEnd();
+                    ArrayList list = JsonConvert.DeserializeObject<ArrayList>(result);
+
+                    for (int k = 0; k < list.Count; k++)
+                    {
+                        JArray jArray = (JArray)list[k];
+                        string[] arr = new string[list.Count];
+                        for (int m = 0; m < jArray.Count; m++)
+                        {
+                            arr[m] = jArray[m].ToString();
+                            if (hashtable["name"].ToString() == arr[m].ToString())
+                            {
+                                hashtable.Add("color", Color.FromArgb(71, 70, 68));
+                            }
+                        }
+                    }
+                    if (hashtable["color"] == null)
+                    {
+                        hashtable.Add("color", Color.FromArgb(175, 171, 171));
+                    }
                     btnLocation = draw.getButton(hashtable, parentForm);
                 }
             }
         }
+
+
 
         private void Location_Click(object sender, EventArgs e)
         {
@@ -106,10 +132,39 @@ namespace WhoSForms.Views
 
             hashtable.Add("lNo", lNo);
 
-            if(webAPI.PostListview(Program.serverUrl + "Location/LocationBtn", hashtable, listLocation))
+            if (webAPI.PostListview(Program.serverUrl + "Location/LocationBtn", hashtable, listLocation))
             {
                 lNo = "";
             }
         }
+
+        //public bool Num(string url)
+        //{
+        //    MessageBox.Show(btnLocation.Name);
+        //    try
+        //    {
+        //        WebClient wc = new WebClient();
+        //        Stream stream = wc.OpenRead(Program.serverUrl + "Location/test");
+        //        StreamReader sr = new StreamReader(stream);
+        //        string result = sr.ReadToEnd();
+        //        ArrayList list = JsonConvert.DeserializeObject<ArrayList>(result);
+
+        //        for (int i = 0; i < list.Count; i++)
+        //        {
+        //            JArray jArray = (JArray)list[i];
+        //            string[] arr = new string[list.Count];
+        //            for (int j = 0; j < jArray.Count; j++)
+        //            {
+        //                arr[j] = jArray[j].ToString();
+        //                //MessageBox.Show(arr[j].ToString());
+        //            }
+        //        }
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

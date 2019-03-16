@@ -98,6 +98,7 @@ namespace WhoSForms.Views
             hashtable.Add("name", "tboxCall");
             hashtable.Add("font", new Font("맑은 고딕", 11));
             tboxCall = draw.getTextBox(hashtable, parentForm);
+            tboxCall.KeyPress += TboxCall_KeyPress;
 
             hashtable = new Hashtable();
             hashtable.Add("point", new Point(200, 262));
@@ -119,6 +120,7 @@ namespace WhoSForms.Views
             hashtable.Add("name", "tboxPassword");
             hashtable.Add("font", new Font("맑은 고딕", 11));
             tboxPassword = draw.getTextBox(hashtable, parentForm);
+            tboxPassword.PasswordChar = '●';
 
             hashtable = new Hashtable();
             hashtable.Add("size", new Size(95, 50));
@@ -139,6 +141,16 @@ namespace WhoSForms.Views
             hashtable.Add("font", new Font("맑은 고딕", 13, FontStyle.Bold));
             hashtable.Add("click", (EventHandler)Cancel_Click);
             btnCancel = draw.getButton(hashtable, parentForm);
+        }
+
+        private void TboxCall_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.ForeColor = Color.Black;
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '-'))
+            {
+                e.Handled = true;
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)

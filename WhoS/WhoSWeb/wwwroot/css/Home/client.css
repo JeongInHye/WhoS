@@ -1,15 +1,22 @@
 ﻿.tabcontent {
-    color: black;
+    /*color: black;
     padding: 100px 20px;
     height: 100%;
     text-align: center;
     font-size: 30px;
+    line-height: 1.8;*/
+    color: black;
+    padding: 100px 20px;
+    height: 100%;
+    text-align: left;
+    font-size: 30px;
     line-height: 1.8;
+    margin-left: 40%;
 }
 
 .sub2 {
-    width: 70%;
-    transform: translateX(15%);
+    width: 80%;
+    transform: translateX(10%);
 }
 
 .button {
@@ -34,6 +41,7 @@
     width: 100%;
     box-sizing: border-box;
     border: 1px solid black;
+    font-size:20px;
 }
 
 .active {
@@ -48,37 +56,41 @@
 .head {
     height: 35px;
     background-color: antiquewhite;
+    padding-bottom:7px;
 }
 
 .head li div {
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
-    padding-top: 5px;
+    font-size: 22px;
+    padding-top: 7px;
+    padding-bottom:7px;
 }
         
 .list li {
-    height: 60px;    
+    height: 50px;
+    font-size:19px; 
 }
-
+    
 .head li div, .list li div {
-    width: calc((100% - 170px) / 3);
+    width: calc(100% / 6);
     float: left;    
 }
 
 .list li div {
-    text-align: left;
+    text-align: center;
 }
 
-.head li div:first-child, .list li div:first-child {
+
+./*head li div:first-child, .list li div:first-child {
     width: 70px;
-}
+}*/
 
-.head li div:last-child, .list li div:last-child {
-    width: 100px;
-}
+/*.head li div:last-child, .list li div:last-child {
+    width: 70px;
+}*/
 
-.list li div:last-child button {
+/*.list li div:last-child button {
     width: calc(100% - 10px);
     padding: 10px 0;
     margin: 10px 5px;
@@ -88,8 +100,8 @@
     background-color: #4CAF50;
     color: white;
     border-radius: 5px;
-}
+}*/
 
 .text_center {
-    text-align: center !important;
+    text-align:center;
 }

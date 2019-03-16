@@ -1,20 +1,26 @@
 ﻿$(document).ready(function () {
     $("form").submit(function (e) {
         e.preventDefault();
-        var loginData = {
-            id: $("#id").val(),
-            password: $("#password").val()
-        };
+        var inputid = $("input[name=id]").val();
+        var inputpw = $("input[name=pw]").val();
 
-        $.post("User/Login", loginData).done(function (d) {
-            if (d.state == 1) {
+        $.post("/User/Login", { id: inputid, pw: inputpw }).done(function (data) {
+            var cNo = data[0].cNo;
+            var cName = data[0].cName;
+            var cPName = data[0].cPName;  
+
+            if (cName != "") {
+                if (window.sessionStorage) {
+                    sessionStorage.setItem("cNo", cNo);
+                    sessionStorage.setItem("cName", cName);
+                    sessionStorage.setItem("cPName", cPName);
+                }
                 location.href = "/Home/Sub1";
-            } else if (d.state == 2) {
-                location.href = "/Home/Sub2";
-            } else {
+            }
+            else {
                 $("#id").val("");
-                $("#password").val("");
-                alert("사용자가 없습니다.");
+                $("#pw").val("");
+                alert("거래처를 등록해 주세요");
             }
         });
     });

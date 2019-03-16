@@ -85,12 +85,12 @@ namespace WebApplication.Controllers
             return list;
         }
 
-        [Route("test/test")]
+        [Route("Location/test")]
         [HttpGet]
         public ActionResult<ArrayList> test()
         {
             dataBase = new DataBase();
-            SqlDataReader sdr = dataBase.Reader("test");
+            SqlDataReader sdr = dataBase.Reader("sp_Location");
 
             ArrayList list = new ArrayList();
             while (sdr.Read())

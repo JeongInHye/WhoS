@@ -125,7 +125,6 @@ namespace WhoSForms.Views
             ListViewItem cNoitem = itemGroup[0];
 
             pNum = cNoitem.SubItems[5].Text;
-            MessageBox.Show(pNum);
         }
 
         private void OutCom_Click(object sender, EventArgs e)

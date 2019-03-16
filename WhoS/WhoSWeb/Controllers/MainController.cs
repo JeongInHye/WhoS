@@ -33,13 +33,18 @@ namespace WebApplication.Controllers
                 arr[2] = sdr.GetValue(2).ToString();
                 arr[3] = sdr.GetValue(3).ToString();
                 arr[4] = sdr.GetValue(4).ToString();
+
                 if (sdr.GetValue(5).ToString() == "N" && sdr.GetValue(6).ToString() == "N")
                 {
                     arr[5] = "입고해야됨";
                 }
-                if (sdr.GetValue(5).ToString() == "Y" && sdr.GetValue(6).ToString() == "N")
+                else if (sdr.GetValue(5).ToString() == "Y" && sdr.GetValue(6).ToString() == "N")
                 {
                     arr[5] = "출고해야됨";
+                }
+                else if (sdr.GetValue(5).ToString() == "Y" && sdr.GetValue(6).ToString() == "Y")
+                {
+                    arr[5] = "거래완료";
                 }
                 list.Add(arr);
             }

@@ -162,6 +162,7 @@ namespace WhoSForms.Views
                     hashtable.Add("name", "tboxCall");
                     hashtable.Add("font", new Font("맑은 고딕", 11));
                     tboxCall = draw.getTextBox_text(hashtable, parentForm);
+                    tboxCall.KeyPress += TboxCall_KeyPress;
 
                     hashtable = new Hashtable();
                     hashtable.Add("point", new Point(200, 262));
@@ -186,12 +187,23 @@ namespace WhoSForms.Views
                     hashtable.Add("name", "tboxPassword");
                     hashtable.Add("font", new Font("맑은 고딕", 11));
                     tboxPassword = draw.getTextBox_text(hashtable, parentForm);
+                    tboxPassword.PasswordChar = '●';
                 }
                 return true;
             }
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        private void TboxCall_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.ForeColor = Color.Black;
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '-'))
+            {
+                e.Handled = true;
             }
         }
 
