@@ -101,16 +101,16 @@ namespace WhoSForms.View
             btn_client = draw.getButton(hashtable, pnl_head);
             btn_client.ForeColor = Color.FromArgb(240, 240, 240);
 
-            hashtable = new Hashtable();
-            hashtable.Add("size", new Size(160, 85));
-            hashtable.Add("point", new Point(800, 0));
-            hashtable.Add("color", Color.FromArgb(71, 70, 68));
-            hashtable.Add("name", "btn_income");
-            hashtable.Add("text", "매출");
-            hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
-            hashtable.Add("click", (EventHandler)Income_Click);
-            btn_income = draw.getButton(hashtable, pnl_head);
-            btn_income.ForeColor = Color.FromArgb(240, 240, 240);
+            //hashtable = new Hashtable();
+            //hashtable.Add("size", new Size(160, 85));
+            //hashtable.Add("point", new Point(800, 0));
+            //hashtable.Add("color", Color.FromArgb(71, 70, 68));
+            //hashtable.Add("name", "btn_income");
+            //hashtable.Add("text", "매출");
+            //hashtable.Add("font", new Font("맑은 고딕", 14, FontStyle.Regular));
+            //hashtable.Add("click", (EventHandler)Income_Click);
+            //btn_income = draw.getButton(hashtable, pnl_head);
+            //btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();
             tagetForm = draw.getMdiForm(parentForm, new MainInfoForm(), pnl_contents);
@@ -130,8 +130,8 @@ namespace WhoSForms.View
             btn_location.ForeColor = Color.FromArgb(240, 240, 240);
             btn_client.BackColor = Color.FromArgb(71, 70, 68);
             btn_client.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_income.BackColor = Color.FromArgb(71, 70, 68);
-            btn_income.ForeColor = Color.FromArgb(240, 240, 240);
+            //btn_income.BackColor = Color.FromArgb(71, 70, 68);
+            //btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();
 
@@ -152,8 +152,8 @@ namespace WhoSForms.View
             btn_location.ForeColor = Color.FromArgb(240, 240, 240);
             btn_client.BackColor = Color.FromArgb(71, 70, 68);
             btn_client.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_income.BackColor = Color.FromArgb(71, 70, 68);
-            btn_income.ForeColor = Color.FromArgb(240, 240, 240);
+            //btn_income.BackColor = Color.FromArgb(71, 70, 68);
+            //btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();
 
@@ -174,8 +174,8 @@ namespace WhoSForms.View
             btn_location.ForeColor = Color.FromArgb(240, 240, 240);
             btn_client.BackColor = Color.FromArgb(71, 70, 68);
             btn_client.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_income.BackColor = Color.FromArgb(71, 70, 68);
-            btn_income.ForeColor = Color.FromArgb(240, 240, 240);
+            //btn_income.BackColor = Color.FromArgb(71, 70, 68);
+            //btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();
 
@@ -196,8 +196,8 @@ namespace WhoSForms.View
             btn_out.ForeColor = Color.FromArgb(240, 240, 240);
             btn_client.BackColor = Color.FromArgb(71, 70, 68);
             btn_client.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_income.BackColor = Color.FromArgb(71, 70, 68);
-            btn_income.ForeColor = Color.FromArgb(240, 240, 240);
+            //btn_income.BackColor = Color.FromArgb(71, 70, 68);
+            //btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();
 
@@ -218,8 +218,8 @@ namespace WhoSForms.View
             btn_out.ForeColor = Color.FromArgb(240, 240, 240);
             btn_location.BackColor = Color.FromArgb(71, 70, 68);
             btn_location.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_income.BackColor = Color.FromArgb(71, 70, 68);
-            btn_income.ForeColor = Color.FromArgb(240, 240, 240);
+            //btn_income.BackColor = Color.FromArgb(71, 70, 68);
+            //btn_income.ForeColor = Color.FromArgb(240, 240, 240);
 
             if (tagetForm != null) tagetForm.Dispose();
 
@@ -227,26 +227,26 @@ namespace WhoSForms.View
             tagetForm.Show();
         }
 
-        private void Income_Click(object sender, EventArgs e)
-        {
-            btn_income.BackColor = Color.FromArgb(240, 240, 240);
-            btn_income.ForeColor = Color.FromArgb(71, 70, 68);
+        //private void Income_Click(object sender, EventArgs e)
+        //{
+        //    btn_income.BackColor = Color.FromArgb(240, 240, 240);
+        //    btn_income.ForeColor = Color.FromArgb(71, 70, 68);
 
-            btn_main.BackColor = Color.FromArgb(71, 70, 68);
-            btn_main.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_enter.BackColor = Color.FromArgb(71, 70, 68);
-            btn_enter.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_out.BackColor = Color.FromArgb(71, 70, 68);
-            btn_out.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_location.BackColor = Color.FromArgb(71, 70, 68);
-            btn_location.ForeColor = Color.FromArgb(240, 240, 240);
-            btn_client.BackColor = Color.FromArgb(71, 70, 68);
-            btn_client.ForeColor = Color.FromArgb(240, 240, 240);
+        //    btn_main.BackColor = Color.FromArgb(71, 70, 68);
+        //    btn_main.ForeColor = Color.FromArgb(240, 240, 240);
+        //    btn_enter.BackColor = Color.FromArgb(71, 70, 68);
+        //    btn_enter.ForeColor = Color.FromArgb(240, 240, 240);
+        //    btn_out.BackColor = Color.FromArgb(71, 70, 68);
+        //    btn_out.ForeColor = Color.FromArgb(240, 240, 240);
+        //    btn_location.BackColor = Color.FromArgb(71, 70, 68);
+        //    btn_location.ForeColor = Color.FromArgb(240, 240, 240);
+        //    btn_client.BackColor = Color.FromArgb(71, 70, 68);
+        //    btn_client.ForeColor = Color.FromArgb(240, 240, 240);
 
-            if (tagetForm != null) tagetForm.Dispose();
+        //    if (tagetForm != null) tagetForm.Dispose();
 
-            tagetForm = draw.getMdiForm(parentForm, new IncomeForm(), pnl_contents);
-            tagetForm.Show();
-        }
+        //    tagetForm = draw.getMdiForm(parentForm, new IncomeForm(), pnl_contents);
+        //    tagetForm.Show();
+        //}
     }
 }
