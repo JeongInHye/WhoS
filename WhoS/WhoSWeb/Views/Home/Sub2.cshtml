@@ -20,7 +20,7 @@
         <button class="tablink">예약하기</button>
         <button class="tablink active">예약 현황</button>
     </header>
-    <div id="contents">
+    <div id="contents2">
         <div class="sub2" data-ng-app="myApp" data-ng-controller="sub2">
             <br>
             <input type="text" class="filter" placeholder="물품명을 검색해 주세요." data-ng-model="filter.pName">
@@ -44,12 +44,13 @@
                     <div>{{row.pNum}}</div>
                     <div>{{row.text}}</div>
                     <br><hr>
-                    @*<div><button type="button" data-ng-click="btn(row, $index)">{{row.name}}</button></div>*@
                 </li>
             </ul>
         </div>
     </div>
-    <footer id="footer" class="height">아래글</footer>
+    <footer id="footer" class="height2">
+        <font color="white">&nbsp;Copyright 2019. JeongInHye All rights reserved.</font>
+    </footer>
 </body>
 </html>
 

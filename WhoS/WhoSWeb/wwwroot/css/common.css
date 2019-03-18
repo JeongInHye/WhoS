@@ -14,6 +14,17 @@
     text-align: center;
 }
 
+.height2 {
+    height: 63px;
+    background-color: #474644;
+}
+
+#contents2 {
+    min-height: calc(100vh - 142px);
+    background-color: #FCFCFC;
+    text-align: center;
+}
+
 .tablink {
     background-color: #474644;
     color: white;
