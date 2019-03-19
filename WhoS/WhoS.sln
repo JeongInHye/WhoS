@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSForms", "WhoSForms\WhoS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWeb", "WhoSWeb\WhoSWeb.csproj", "{F3233637-2123-4158-8ACE-5A9C429F9DAB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhoSWebAPI", "WhoSWebAPI\WhoSWebAPI.csproj", "{880240C4-D5E7-4BF9-80B2-6BC6DBCAE0D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3233637-2123-4158-8ACE-5A9C429F9DAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{880240C4-D5E7-4BF9-80B2-6BC6DBCAE0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{880240C4-D5E7-4BF9-80B2-6BC6DBCAE0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{880240C4-D5E7-4BF9-80B2-6BC6DBCAE0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{880240C4-D5E7-4BF9-80B2-6BC6DBCAE0D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
